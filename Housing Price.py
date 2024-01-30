@@ -6,7 +6,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 import numpy as np
 import math
 from pandas.api.types import is_numeric_dtype
-df = pd.read_csv('C:/Users/Ethan Lapaczonek/Downloads/house-prices-advanced-regression-techniques/train.csv')
+df = pd.read_csv('C:/Users/{insert path}/train.csv')
 
 print(df)
 print(df.info())
@@ -57,7 +57,7 @@ print('R-squared scores:', round(r2, 2))
 
 
 #Test it with Kaggle test set
-test_data = pd.read_csv('C:/Users/Ethan Lapaczonek/Downloads/house-prices-advanced-regression-techniques/test.csv')
+test_data = pd.read_csv('C:/Users/{insert path}/test.csv')
 ids = test_data.pop("Id")
 label_encoder = LabelEncoder()
 x_categorical_test = test_data.select_dtypes(include=['object']).apply(label_encoder.fit_transform)
@@ -69,9 +69,9 @@ test_df.fillna(mean_test, inplace=True)
 predictions = rf.predict(test_df)
 output = pd.DataFrame({"Id":ids, "SalePrice":predictions.squeeze()})
 
-sample_submission_df = pd.read_csv('C:/Users/Ethan Lapaczonek/Downloads/house-prices-advanced-regression-techniques/sample_submission.csv')
+sample_submission_df = pd.read_csv('C:/Users/{insert path}/sample_submission.csv')
 sample_submission_df['SalePrice'] = rf.predict(test_df)
-sample_submission_df.to_csv('C:/Users/Ethan Lapaczonek/Downloads/house-prices-advanced-regression-techniques/submission.csv', index=False)
+sample_submission_df.to_csv('C:/Users/{insert path}/submission.csv', index=False)
 print(sample_submission_df)
 #Got a final score of .15
 
@@ -85,7 +85,7 @@ regr_trans.fit(X_train, y_train)
 yhat = regr_trans.predict(X_test)
 print(f"R^2 is: {r2_score(y_test, yhat)}, MSE is: {mean_squared_error(y_test,yhat)}")
 #Test it with Kaggle test set
-test_data = pd.read_csv('C:/Users/Ethan Lapaczonek/Downloads/house-prices-advanced-regression-techniques/test.csv')
+test_data = pd.read_csv('C:/Users/{insert path}/test.csv')
 ids = test_data.pop("Id")
 label_encoder = LabelEncoder()
 x_categorical_test = test_data.select_dtypes(include=['object']).apply(label_encoder.fit_transform)
@@ -97,9 +97,9 @@ test_df.fillna(median_test, inplace=True)
 predictions = regr_trans.predict(test_df)
 output = pd.DataFrame({"Id":ids, "SalePrice":predictions.squeeze()})
 
-sample_submission_df = pd.read_csv('C:/Users/Ethan Lapaczonek/Downloads/house-prices-advanced-regression-techniques/sample_submission.csv')
+sample_submission_df = pd.read_csv('C:/Users/{insert path}/sample_submission.csv')
 sample_submission_df['SalePrice'] = regr_trans.predict(test_df)
-sample_submission_df.to_csv('C:/Users/Ethan Lapaczonek/Downloads/house-prices-advanced-regression-techniques/submission.csv', index=False)
+sample_submission_df.to_csv('C:/Users/{insert path}/submission.csv', index=False)
 print(sample_submission_df)
 
 
@@ -112,7 +112,7 @@ print(f"GRADIENT BOOSTED RANDOM FOREST REGRESSION IS : {mse_gb}")
 r2_gb = r2_score(y_test, pred_gb)
 print(f"GRADIENT R^2 IS: {r2_gb}")
 sample_submission_df['SalePrice'] = model_gb.predict(test_df)
-sample_submission_df.to_csv('C:/Users/Ethan Lapaczonek/Downloads/house-prices-advanced-regression-techniques/submission(gb).csv', index=False)
+sample_submission_df.to_csv('C:/Users/{insert path}/submission(gb).csv', index=False)
 
 print(list(X_train.columns))
 
@@ -155,9 +155,9 @@ predictions_new = rf_new.predict(test_df[["OverallQual", "GrLivArea", "BsmtFinSF
 output_new = pd.DataFrame({"Id":ids, "SalePrice":predictions_new.squeeze()})
 print(output_new)
 
-sample_submission_df_new = pd.read_csv('C:/Users/Ethan Lapaczonek/Downloads/house-prices-advanced-regression-techniques/sample_submission.csv')
+sample_submission_df_new = pd.read_csv('C:/Users/{insert path}/sample_submission.csv')
 sample_submission_df_new['SalePrice'] = rf_new.predict(test_df[["OverallQual", "GrLivArea", "BsmtFinSF1"]])
-sample_submission_df_new.to_csv('C:/Users/Ethan Lapaczonek/Downloads/house-prices-advanced-regression-techniques/submission.csv', index=False)
+sample_submission_df_new.to_csv('C:/Users/{insert path}/submission.csv', index=False)
 print(sample_submission_df_new)
 #Worse Score (gave me 0.17355)
 '''
