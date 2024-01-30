@@ -214,22 +214,9 @@ new_df = one_hot_encoded_data.join(df_num)
 print(new_df[new_df.isna().any(axis=1)])
 new_df = new_df.dropna()
 print(new_df.shape)
-
-
-
-
-
-
-
-
-
-
-
 accuracy = accuracy_score(test_y, y_pred)
 print("Accuracy:", accuracy)
 print(classification_report(test_y, y_pred))
-'''
-'''
 
 model_gradient = GradientBoostingClassifier(n_estimators=300, learning_rate=0.05, random_state=100, max_features=5 )
 model_gradient.fit(train_X,train_y)
